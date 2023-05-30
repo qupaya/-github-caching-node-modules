@@ -59,11 +59,12 @@ jobs:
         id: affected-values
 
   build:
+    if: needs.set-matrices.outputs.build != '[]'
     needs: [install, set-matrices]
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        project: ${{ fromJSON(needs.set-matrices.outputs.build) }}
+        project: ${{ needs.set-matrices.outputs.build }}
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3.5.1
@@ -78,11 +79,12 @@ jobs:
       - run: npx nx build ${{ matrix.project }}
 
   test:
+    if: needs.set-matrices.outputs.test != '[]'
     needs: [install, set-matrices]
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        project: ${{ fromJSON(needs.set-matrices.outputs.test) }}
+        project: ${{ needs.set-matrices.outputs.test }}
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3.5.1
@@ -97,11 +99,12 @@ jobs:
       - run: npx nx test ${{ matrix.project }}
 
   lint:
+    if: needs.set-matrices.outputs.lint != '[]'
     needs: [install, set-matrices]
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        project: ${{ fromJSON(needs.set-matrices.outputs.lint) }}
+        project: ${{ needs.set-matrices.outputs.lint }}
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3.5.1
