@@ -3,6 +3,8 @@ name: test
 
 'on':
   push:
+    branches:
+      - 'main'
   pull_request:
 
 jobs:
@@ -46,6 +48,8 @@ jobs:
       e2e: ${{ steps.affected-values.outputs.e2e }}
     steps:
       - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
       - uses: actions/setup-node@v3.5.1
         with:
           node-version-file: 'package.json'
