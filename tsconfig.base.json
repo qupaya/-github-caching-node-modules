@@ -14,7 +14,206 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@github-caching-node-modules/lib-acorn": ["libs/lib-acorn/src/index.ts"],
+      "@github-caching-node-modules/lib-airplane": [
+        "libs/lib-airplane/src/index.ts"
+      ],
+      "@github-caching-node-modules/lib-apple": ["libs/lib-apple/src/index.ts"],
+      "@github-caching-node-modules/lib-apricot": [
+        "libs/lib-apricot/src/index.ts"
+      ],
+      "@github-caching-node-modules/lib-ball": ["libs/lib-ball/src/index.ts"],
+      "@github-caching-node-modules/lib-banana": [
+        "libs/lib-banana/src/index.ts"
+      ],
+      "@github-caching-node-modules/lib-beach": ["libs/lib-beach/src/index.ts"],
+      "@github-caching-node-modules/lib-blubb": ["libs/lib-blubb/src/index.ts"],
+      "@github-caching-node-modules/lib-butterfly": [
+        "libs/lib-butterfly/src/index.ts"
+      ],
+      "@github-caching-node-modules/lib-camera": [
+        "libs/lib-camera/src/index.ts"
+      ],
+      "@github-caching-node-modules/lib-candle": [
+        "libs/lib-candle/src/index.ts"
+      ],
+      "@github-caching-node-modules/lib-carrot": [
+        "libs/lib-carrot/src/index.ts"
+      ],
+      "@github-caching-node-modules/lib-cat": ["libs/lib-cat/src/index.ts"],
+      "@github-caching-node-modules/lib-chair": ["libs/lib-chair/src/index.ts"],
+      "@github-caching-node-modules/lib-clothes": [
+        "libs/lib-clothes/src/index.ts"
+      ],
+      "@github-caching-node-modules/lib-daisy": ["libs/lib-daisy/src/index.ts"],
+      "@github-caching-node-modules/lib-desk": ["libs/lib-desk/src/index.ts"],
+      "@github-caching-node-modules/lib-dinosaur": [
+        "libs/lib-dinosaur/src/index.ts"
+      ],
+      "@github-caching-node-modules/lib-dog": ["libs/lib-dog/src/index.ts"],
+      "@github-caching-node-modules/lib-dolphin": [
+        "libs/lib-dolphin/src/index.ts"
+      ],
+      "@github-caching-node-modules/lib-ear": ["libs/lib-ear/src/index.ts"],
+      "@github-caching-node-modules/lib-egg": ["libs/lib-egg/src/index.ts"],
+      "@github-caching-node-modules/lib-elephant": [
+        "libs/lib-elephant/src/index.ts"
+      ],
+      "@github-caching-node-modules/lib-feather": [
+        "libs/lib-feather/src/index.ts"
+      ],
+      "@github-caching-node-modules/lib-fire": ["libs/lib-fire/src/index.ts"],
+      "@github-caching-node-modules/lib-fish": ["libs/lib-fish/src/index.ts"],
+      "@github-caching-node-modules/lib-flower": [
+        "libs/lib-flower/src/index.ts"
+      ],
+      "@github-caching-node-modules/lib-frog": ["libs/lib-frog/src/index.ts"],
+      "@github-caching-node-modules/lib-garden": [
+        "libs/lib-garden/src/index.ts"
+      ],
+      "@github-caching-node-modules/lib-globe": ["libs/lib-globe/src/index.ts"],
+      "@github-caching-node-modules/lib-grape": ["libs/lib-grape/src/index.ts"],
+      "@github-caching-node-modules/lib-guitar": [
+        "libs/lib-guitar/src/index.ts"
+      ],
+      "@github-caching-node-modules/lib-hamster": [
+        "libs/lib-hamster/src/index.ts"
+      ],
+      "@github-caching-node-modules/lib-hat": ["libs/lib-hat/src/index.ts"],
+      "@github-caching-node-modules/lib-honey": ["libs/lib-honey/src/index.ts"],
+      "@github-caching-node-modules/lib-house": ["libs/lib-house/src/index.ts"],
+      "@github-caching-node-modules/lib-ice-cream": [
+        "libs/lib-ice-cream/src/index.ts"
+      ],
+      "@github-caching-node-modules/lib-ink": ["libs/lib-ink/src/index.ts"],
+      "@github-caching-node-modules/lib-island": [
+        "libs/lib-island/src/index.ts"
+      ],
+      "@github-caching-node-modules/lib-jacket": [
+        "libs/lib-jacket/src/index.ts"
+      ],
+      "@github-caching-node-modules/lib-jellyfish": [
+        "libs/lib-jellyfish/src/index.ts"
+      ],
+      "@github-caching-node-modules/lib-jungle": [
+        "libs/lib-jungle/src/index.ts"
+      ],
+      "@github-caching-node-modules/lib-kangaroo": [
+        "libs/lib-kangaroo/src/index.ts"
+      ],
+      "@github-caching-node-modules/lib-key": ["libs/lib-key/src/index.ts"],
+      "@github-caching-node-modules/lib-kite": ["libs/lib-kite/src/index.ts"],
+      "@github-caching-node-modules/lib-kiwi": ["libs/lib-kiwi/src/index.ts"],
+      "@github-caching-node-modules/lib-lamp": ["libs/lib-lamp/src/index.ts"],
+      "@github-caching-node-modules/lib-lemon": ["libs/lib-lemon/src/index.ts"],
+      "@github-caching-node-modules/lib-leopard": [
+        "libs/lib-leopard/src/index.ts"
+      ],
+      "@github-caching-node-modules/lib-lion": ["libs/lib-lion/src/index.ts"],
+      "@github-caching-node-modules/lib-mango": ["libs/lib-mango/src/index.ts"],
+      "@github-caching-node-modules/lib-minion": [
+        "libs/lib-minion/src/index.ts"
+      ],
+      "@github-caching-node-modules/lib-monkey": [
+        "libs/lib-monkey/src/index.ts"
+      ],
+      "@github-caching-node-modules/lib-moon": ["libs/lib-moon/src/index.ts"],
+      "@github-caching-node-modules/lib-mushroom": [
+        "libs/lib-mushroom/src/index.ts"
+      ],
+      "@github-caching-node-modules/lib-ninja": ["libs/lib-ninja/src/index.ts"],
+      "@github-caching-node-modules/lib-noodle": [
+        "libs/lib-noodle/src/index.ts"
+      ],
+      "@github-caching-node-modules/lib-nose": ["libs/lib-nose/src/index.ts"],
+      "@github-caching-node-modules/lib-notebook": [
+        "libs/lib-notebook/src/index.ts"
+      ],
+      "@github-caching-node-modules/lib-oasis": ["libs/lib-oasis/src/index.ts"],
+      "@github-caching-node-modules/lib-ocean": ["libs/lib-ocean/src/index.ts"],
+      "@github-caching-node-modules/lib-octopus": [
+        "libs/lib-octopus/src/index.ts"
+      ],
+      "@github-caching-node-modules/lib-orange": [
+        "libs/lib-orange/src/index.ts"
+      ],
+      "@github-caching-node-modules/lib-password": [
+        "libs/lib-password/src/index.ts"
+      ],
+      "@github-caching-node-modules/lib-peacock": [
+        "libs/lib-peacock/src/index.ts"
+      ],
+      "@github-caching-node-modules/lib-pencil": [
+        "libs/lib-pencil/src/index.ts"
+      ],
+      "@github-caching-node-modules/lib-penguin": [
+        "libs/lib-penguin/src/index.ts"
+      ],
+      "@github-caching-node-modules/lib-piano": ["libs/lib-piano/src/index.ts"],
+      "@github-caching-node-modules/lib-queen": ["libs/lib-queen/src/index.ts"],
+      "@github-caching-node-modules/lib-quill": ["libs/lib-quill/src/index.ts"],
+      "@github-caching-node-modules/lib-quilt": ["libs/lib-quilt/src/index.ts"],
+      "@github-caching-node-modules/lib-rabbit": [
+        "libs/lib-rabbit/src/index.ts"
+      ],
+      "@github-caching-node-modules/lib-rainbow": [
+        "libs/lib-rainbow/src/index.ts"
+      ],
+      "@github-caching-node-modules/lib-river": ["libs/lib-river/src/index.ts"],
+      "@github-caching-node-modules/lib-rose": ["libs/lib-rose/src/index.ts"],
+      "@github-caching-node-modules/lib-sailboat": [
+        "libs/lib-sailboat/src/index.ts"
+      ],
+      "@github-caching-node-modules/lib-son": ["libs/lib-son/src/index.ts"],
+      "@github-caching-node-modules/lib-sun": ["libs/lib-sun/src/index.ts"],
+      "@github-caching-node-modules/lib-sunflower": [
+        "libs/lib-sunflower/src/index.ts"
+      ],
+      "@github-caching-node-modules/lib-sunny": ["libs/lib-sunny/src/index.ts"],
+      "@github-caching-node-modules/lib-table": ["libs/lib-table/src/index.ts"],
+      "@github-caching-node-modules/lib-tiger": ["libs/lib-tiger/src/index.ts"],
+      "@github-caching-node-modules/lib-tree": ["libs/lib-tree/src/index.ts"],
+      "@github-caching-node-modules/lib-tulip": ["libs/lib-tulip/src/index.ts"],
+      "@github-caching-node-modules/lib-umbrella": [
+        "libs/lib-umbrella/src/index.ts"
+      ],
+      "@github-caching-node-modules/lib-unicorn": [
+        "libs/lib-unicorn/src/index.ts"
+      ],
+      "@github-caching-node-modules/lib-vase": ["libs/lib-vase/src/index.ts"],
+      "@github-caching-node-modules/lib-violet": [
+        "libs/lib-violet/src/index.ts"
+      ],
+      "@github-caching-node-modules/lib-violin": [
+        "libs/lib-violin/src/index.ts"
+      ],
+      "@github-caching-node-modules/lib-volcano": [
+        "libs/lib-volcano/src/index.ts"
+      ],
+      "@github-caching-node-modules/lib-waterfall": [
+        "libs/lib-waterfall/src/index.ts"
+      ],
+      "@github-caching-node-modules/lib-watermelon": [
+        "libs/lib-watermelon/src/index.ts"
+      ],
+      "@github-caching-node-modules/lib-whale": ["libs/lib-whale/src/index.ts"],
+      "@github-caching-node-modules/lib-window": [
+        "libs/lib-window/src/index.ts"
+      ],
+      "@github-caching-node-modules/lib-xylophone": [
+        "libs/lib-xylophone/src/index.ts"
+      ],
+      "@github-caching-node-modules/lib-yacht": ["libs/lib-yacht/src/index.ts"],
+      "@github-caching-node-modules/lib-yawn": ["libs/lib-yawn/src/index.ts"],
+      "@github-caching-node-modules/lib-yogurt": [
+        "libs/lib-yogurt/src/index.ts"
+      ],
+      "@github-caching-node-modules/lib-zebra": ["libs/lib-zebra/src/index.ts"],
+      "@github-caching-node-modules/lib-zeppelin": [
+        "libs/lib-zeppelin/src/index.ts"
+      ]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
