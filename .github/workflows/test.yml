@@ -54,6 +54,9 @@ jobs:
         with:
           node-version-file: 'package.json'
           cache: 'npm'
+      - uses: nrwl/nx-set-shas@v3
+        with:
+          main-branch-name: main
       - uses: actions/cache/restore@v3
         with:
           path: node_modules
