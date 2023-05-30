@@ -24,13 +24,13 @@ jobs:
           key: node_modules_${{ hashFiles('package.json') }}_${{ hashFiles('package-lock.json') }} # must be the same as in "Cache node_modules"
           lookup-only: true
 
-      - if: steps.restore_nodemodules_cache.outputs.cache-hit != true
-        name: Install dependencies
+      - if: steps.restore_nodemodules_cache.outputs.cache-hit != 'true'
+        name: Install dependencies if not cached
         run: |
           npm ci
         
       - if: steps.restore_nodemodules_cache.outputs.cache-hit != 'true'
-        name: Cache node_modules
+        name: Cache node_modules if not cached
         uses: actions/cache/save@v3
         with:
           path: node_modules
