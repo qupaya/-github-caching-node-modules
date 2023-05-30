@@ -6,7 +6,7 @@ targets.forEach((target) => {
   let result;
   try {
     result = execSync(
-      `npx nx print-affected --target=${target} --select=projects`
+      `npx nx print-affected --target=${target} --select=projects --base=b89c574`
     )
       .toString()
       .trim();
@@ -15,8 +15,9 @@ targets.forEach((target) => {
     process.exit(1);
   }
 
+  result = result.length > 0 ? JSON.stringify(result.split(', ')) : '[]';
   // e.g. lint=["example-app-seven","example-app-seven-e2e","lib-acorn"] >> $GITHUB_OUTPUT
-  const output = `echo "${target}=[${result}]" >> $GITHUB_OUTPUT`;
+  const output = `echo '${target}=${result}' >> $GITHUB_OUTPUT`;
   console.log(output);
   execSync(output);
 });

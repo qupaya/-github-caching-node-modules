@@ -71,7 +71,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        project: ${{ needs.set-matrices.outputs.build }}
+        project: ${{ fromJSON(needs.set-matrices.outputs.build) }}
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3.5.1
@@ -91,7 +91,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        project: ${{ needs.set-matrices.outputs.test }}
+        project: ${{ fromJSON(needs.set-matrices.outputs.test) }}
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3.5.1
@@ -111,7 +111,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        project: ${{ needs.set-matrices.outputs.lint }}
+        project: ${{ fromJSON(needs.set-matrices.outputs.lint) }}
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3.5.1
