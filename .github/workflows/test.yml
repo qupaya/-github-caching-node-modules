@@ -51,4 +51,4 @@ jobs:
             path: node_modules
             key: node_modules_${{ hashFiles('package.json') }}_${{ hashFiles('package-lock.json') }} # must be the same as in "Cache node_modules"
             fail-on-cache-miss: true
-        - run: npx nx example-app-one
+        - run: npx nx build example-app-one
