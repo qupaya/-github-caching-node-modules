@@ -38,6 +38,7 @@ jobs:
           key: node_modules_${{ hashFiles('package.json') }}_${{ hashFiles('package-lock.json') }} # we also cache packge.json, because we might have changed some install scripts
 
   build:
+    needs: [install]
     runs-on: ubuntu-latest
     steps:
         - uses: actions/checkout@v3
