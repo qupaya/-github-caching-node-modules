@@ -15,8 +15,12 @@ targets.forEach((target) => {
     process.exit(1);
   }
 
+  const value =
+    result.length > 0
+      ? JSON.stringify(result.replace(/\s/g, '').split(','))
+      : '[]';
   console.log(
     // e.g. lint=["example-app-seven","example-app-seven-e2e","lib-acorn"] >> $GITHUB_OUTPUT
-    `${target}=${JSON.stringify(result.split(', '))} >> $GITHUB_OUTPUT`
+    `${target}=${value} >> $GITHUB_OUTPUT`
   );
 });
