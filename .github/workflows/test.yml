@@ -3,6 +3,7 @@ name: test
 
 "on":
   push:
+  pull_request:
 
 jobs:
   install:
@@ -25,14 +26,12 @@ jobs:
 
       - if: ${{ steps.restore_nodemodules_cache.cache-hit != 'true' }}
         name: Install dependencies
-        continue-on-error: true
         run: |
           npm ci
         
       - if: ${{ steps.restore_nodemodules_cache.cache-hit != 'true' }}
         name: Cache node_modules
         uses: actions/cache/save@v3
-        continue-on-error: true
         with:
           path: node_modules
           key: node_modules_${{ hashFiles('package.json') }}_${{ hashFiles('package-lock.json') }} # we also cache packge.json, because we might have changed some install scripts
