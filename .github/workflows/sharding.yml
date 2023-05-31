@@ -1,0 +1,125 @@
+---
+name: test (sharding)
+
+'on':
+  push:
+    branches:
+      - 'main'
+  pull_request:
+
+jobs:
+  install:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-node@v3.5.1
+        with:
+          node-version-file: 'package.json'
+          cache: 'npm'
+
+      - name: lookup node_modules cache
+        id: restore_nodemodules_cache
+        uses: actions/cache/restore@v3
+        with:
+          path: node_modules
+          key: node_modules_${{ hashFiles('package.json') }}_${{ hashFiles('package-lock.json') }} # must be the same as in "Cache node_modules"
+          lookup-only: true
+
+      - if: steps.restore_nodemodules_cache.outputs.cache-hit != 'true'
+        name: Install dependencies if not cached
+        run: |
+          npm ci
+
+      - if: steps.restore_nodemodules_cache.outputs.cache-hit != 'true'
+        name: Cache node_modules if not cached
+        uses: actions/cache/save@v3
+        with:
+          path: node_modules
+          key: node_modules_${{ hashFiles('package.json') }}_${{ hashFiles('package-lock.json') }} # we also cache packge.json, because we might have changed some install scripts
+
+  set-matrices:
+    needs: [install]
+    runs-on: ubuntu-latest
+    outputs:
+      lint: ${{ steps.affected-values.outputs.lint }}
+      test: ${{ steps.affected-values.outputs.test }}
+      build: ${{ steps.affected-values.outputs.build }}
+      e2e: ${{ steps.affected-values.outputs.e2e }}
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v3.5.1
+        with:
+          node-version-file: 'package.json'
+          cache: 'npm'
+      - uses: nrwl/nx-set-shas@v3
+        with:
+          main-branch-name: main
+      - uses: actions/cache/restore@v3
+        with:
+          path: node_modules
+          key: node_modules_${{ hashFiles('package.json') }}_${{ hashFiles('package-lock.json') }} # must be the same as in "Cache node_modules"
+          fail-on-cache-miss: true
+      - run: node ./tools/create-affected-sharding-matrix.mjs 16
+        id: affected-values
+
+  build:
+    if: needs.set-matrices.outputs.build != ''
+    needs: [install, set-matrices]
+    runs-on: ubuntu-latest
+    strategy:
+      matrix: ${{ fromJSON(needs.set-matrices.outputs.build) }}
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3.5.1
+        with:
+          node-version-file: 'package.json'
+          cache: 'npm'
+      - uses: actions/cache/restore@v3
+        with:
+          path: node_modules
+          key: node_modules_${{ hashFiles('package.json') }}_${{ hashFiles('package-lock.json') }} # must be the same as in "Cache node_modules"
+          fail-on-cache-miss: true
+      - run: npx nx run-many --target=build --projects ${{ matrix.* }}
+
+  test:
+    if: needs.set-matrices.outputs.test != ''
+    needs: [install, set-matrices]
+    runs-on: ubuntu-latest
+    strategy:
+      # matrix: ${{ fromJSON(needs.set-matrices.outputs.test) }}
+      matrix:
+        1/1: example-app-seven
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3.5.1
+        with:
+          node-version-file: 'package.json'
+          cache: 'npm'
+      - uses: actions/cache/restore@v3
+        with:
+          path: node_modules
+          key: node_modules_${{ hashFiles('package.json') }}_${{ hashFiles('package-lock.json') }} # must be the same as in "Cache node_modules"
+          fail-on-cache-miss: true
+      - run: npx nx run-many --target=test --projects ${{ matrix.* }}
+
+  lint:
+    if: needs.set-matrices.outputs.lint != ''
+    needs: [install, set-matrices]
+    runs-on: ubuntu-latest
+    strategy:
+      matrix: ${{ fromJSON(needs.set-matrices.outputs.lint) }}
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3.5.1
+        with:
+          node-version-file: 'package.json'
+          cache: 'npm'
+      - uses: actions/cache/restore@v3
+        with:
+          path: node_modules
+          key: node_modules_${{ hashFiles('package.json') }}_${{ hashFiles('package-lock.json') }} # must be the same as in "Cache node_modules"
+          fail-on-cache-miss: true
+      - run: npx nx run-many --target=lint --projects ${{ matrix.* }}
