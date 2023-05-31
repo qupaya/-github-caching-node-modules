@@ -6,7 +6,7 @@ targets.forEach((target) => {
   let result;
   try {
     result = execSync(
-      `npx nx print-affected --target=${target} --select=projects --base=b89c574`
+      `npx nx print-affected --target=${target} --select=projects ` // add --base=b89c574 to have all affected
     )
       .toString()
       .trim();
