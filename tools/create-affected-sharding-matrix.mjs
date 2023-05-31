@@ -23,7 +23,7 @@ targets.forEach((target) => {
     process.exit(1);
   }
 
-  console.log(affectedProjects);
+  // console.log(affectedProjects);
 
   if (affectedProjects.length === 0) {
     return;
@@ -51,5 +51,5 @@ targets.forEach((target) => {
   // e.g. lint=["example-app-seven","example-app-seven-e2e","lib-acorn"] >> $GITHUB_OUTPUT
   const output = `echo '${target}=${JSON.stringify(matrix)}' >> $GITHUB_OUTPUT`;
   console.log(output);
-  // execSync(output);
+  execSync(output);
 });
