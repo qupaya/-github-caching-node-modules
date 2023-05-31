@@ -89,7 +89,9 @@ jobs:
     needs: [install, set-matrices]
     runs-on: ubuntu-latest
     strategy:
-      matrix: ${{ fromJSON(needs.set-matrices.outputs.test) }}
+      # matrix: ${{ fromJSON(needs.set-matrices.outputs.test) }}
+      matrix:
+        1/1: example-app-seven
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3.5.1
@@ -101,7 +103,7 @@ jobs:
           path: node_modules
           key: node_modules_${{ hashFiles('package.json') }}_${{ hashFiles('package-lock.json') }} # must be the same as in "Cache node_modules"
           fail-on-cache-miss: true
-      - run: npx nx run-many --target=test --projects ${{ matrix.project }}
+      - run: npx nx run-many --target=test --projects ${{ matrix.* }}
 
   lint:
     if: needs.set-matrices.outputs.lint != ''
@@ -120,4 +122,4 @@ jobs:
           path: node_modules
           key: node_modules_${{ hashFiles('package.json') }}_${{ hashFiles('package-lock.json') }} # must be the same as in "Cache node_modules"
           fail-on-cache-miss: true
-      - run: npx nx run-many --target=lint --projects ${{ matrix.project }}
+      - run: npx nx run-many --target=lint --projects ${{ matrix.* }}
