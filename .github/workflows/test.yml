@@ -3,6 +3,8 @@ name: test
 
 'on':
   push:
+    branches:
+      - 'main'
   pull_request:
 
 jobs:
@@ -46,10 +48,15 @@ jobs:
       e2e: ${{ steps.affected-values.outputs.e2e }}
     steps:
       - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
       - uses: actions/setup-node@v3.5.1
         with:
           node-version-file: 'package.json'
           cache: 'npm'
+      - uses: nrwl/nx-set-shas@v3
+        with:
+          main-branch-name: main
       - uses: actions/cache/restore@v3
         with:
           path: node_modules
@@ -64,7 +71,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        project: ${{ needs.set-matrices.outputs.build }}
+        project: ${{ fromJSON(needs.set-matrices.outputs.build) }}
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3.5.1
@@ -84,7 +91,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        project: ${{ needs.set-matrices.outputs.test }}
+        project: ${{ fromJSON(needs.set-matrices.outputs.test) }}
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3.5.1
@@ -104,7 +111,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        project: ${{ needs.set-matrices.outputs.lint }}
+        project: ${{ fromJSON(needs.set-matrices.outputs.lint) }}
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3.5.1
